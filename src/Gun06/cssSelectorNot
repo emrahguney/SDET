@@ -1,0 +1,74 @@
+ 	         ***CSS***->ozelliklerinden yola cikarak bulma islemine CSS Selector denir
+-WebElement text= driver.findElement(By.cssSelector("input[id='user-message']"));
+inputun icindeki id nin parametresi user-message i bulur yani;
+input->id->user-message bu anlama gelir
+-yanina bir tane daha parametre koyabilirsin->input[id='user-message'][type='text']
+
+-id icin(#)->By.cssSelector("#logout");  id si logout olan**By.cssSelector("a#logout");//a tag lılar için de id si logout olan
+
+-class icin(.)->By.cssSelector(‘’.center’’); // [class=‘center’] //By.cssSelector(‘’p.center’’);  // p tag lılar için de class i center olan
+
+-By.cssSelector("input.form-control[type=‘text’]");  //bütün inputlarda class=‘form-control’ olanlardan type=‘text’ olanlar seçer
+
+- Assert.assertEquals(name.getAttribute("value"),checkname.getText());->value; girdigimiz yaziyi okutuyor
+
+-  WebElement qwer= driver.findElement(By.cssSelector("input[id='user-message']"));
+        qwer.sendKeys("emrahguney");
+"qwer" in icindeki yaziyi nasil aliriz->qwer.getAttribute("value"); ile icindeki yaziyi aliriz
+
+-attributlarda;mesela id de ->id=”u_7_b_Ah” gibi u_ ile baslayan birseyse bu id nin parametresi degiskendir
+
+-	* -> İçinde geçen
+^ -> ile başlayan
+$ -> ile biten
+[id^='u_'][placeholder='Adın']->id si u_ ile baslayan placeholderi Adin olan
+
+[id^='u_'] -> id si    u_ ile başlayan  startWith
+[id*='u_'] -> id sinde u_ geçen         contains
+[id$='u_'] -> id si    u_ ile biten     endWith
+“>”  -> cocuklarda arar
+“ ”-> tüm cocuklarda(torunlar dahil)(altsoyu) arar
+“+”    -> bitişik kardeş i bulur
+“~”    -> tüm kardeşlerde ara(tum bitisik kardeslerde arar)
+
+<div>  cocukları: span, span, div
+       Tumcocukları(altsoyu): span, span, div, img, input
+
+  <span> merhaba 1 </span>
+  <span> merhaba 2 </span>
+
+  <div>  -> çocuk
+     <img src=logo.png>
+     <input type="text">
+  </div>
+
+</div>
+<label>merhaba</label> -kardeşi
+<h2>merhaba</h2>       -diğer kardeş
+
+div[id='user-message'] > label->id si ‘user-message’ olan div metodunun cocuklarindan label metodunu alir
+id si user-message olan DIV in çocuklarından label olan
+
+div[id='user-message'] > label + span
+id si user-message olan DIV in çocuklarından label dan hemen sonraki span
+
+div[id='user-message'] > span   yukarıdaki ile aynı
+bir tane daha span varsa 2. spana ulasmak icin-> div[id='user-message'] > span +span derdik
+
+[id='get-input'] input  ->[ id='get-input'] ile input arasinda bosluk  var boslugun anlami -> tüm cocuklarda(torunlar dahil)(altsoyu) arar
+id si get-input olan elemanın bütün cocuklarındaki ilk input olan
+
+[id='get-input'] input[class='form-control']-> id si get-input olan elemanın bütün cocuklarındaki input olan ve input un classi form-control olan inputu bulduk
+
+[id='get-input']+div -> id si get-input olan metodun bitisik kardesine yani bitisik kardesi(bir alt kardesi) div olan metodu bulduk yani div metodunu bulduk
+
+[id=’user-message’] > * -> id si ‘user-message’ olan metodun tum cocuklari; id si ‘user-message’ olan metodun icindekilerinin hepsi
+
+-[class='nav navbar-nav']-> bunun 3 tane cocugu var 3. Cocuga ulasmak icin;
+
+[class='nav navbar-nav'] > li+li+li
+[class='nav navbar-nav'] > :nth-child(3)	bu ikisinden birini deriz
+
+yukarıdakilerin ikiside 3.Çocuk demekdir. Ikincisini kullanmak daha mantiklidir cunku daha fazla cocugu olan methodlarda 1. Sini kullanmak sikintilidir
+
+bunu kodda nasil yazariz->WebElement input = xxx.findElement(By.cssSelector("[class='nav navbar-nav'] > :nth-child(3)"));

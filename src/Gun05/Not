@@ -1,0 +1,35 @@
+ -id arama->	#user-message->WebElement surname=driver.findElement(By.id("user-message"));
+
+-class arama->	.form-control->WebElement a=driver.findElement(By.className("form-control"));
+
+-LinkText yoluyla eleman bulma islemi sadece a tag inde(<a href) kullanilabilir.
+ WebElement siparislerimLinki= driver.findElement(By.linkText("Siparişlerim"));//tam gorunen lik text ini verecegiz
+ //getAttribute ile 'siparislerimLinki' nde olan parametleri aliyoruz
+ System.out.println("siparislerimLinki.getAttribute(href) = " + siparislerimLinki.getAttribute("href"));
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+-//partialLinkText
+  WebElement link2= driver.findElement(By.partialLinkText("Süper Fiyat"));
+  //gorunen link text inin bir parcasi verilebiliyor.Siyah renkli yazili kisminin bir kismini  alip tamamini yazdirdik
+  System.out.println("link2.getText() = " + link2.getText());
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+-List<WebElement> linkler=driver.findElements(By.tagName("a"));//a tagi ile baslayan tum elemanlari bul
+
+for (WebElement a:linkler){
+    System.out.print("a.getAttribute(\"href\") = " + a.getAttribute("href"));
+    System.out.print("a.getAttribute(\"title\") = " + a.getAttribute("title"));
+    System.out.println("a.getAttribute(\"rel\") = " + a.getAttribute("rel")); }
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+-//navigate; sitede ileri geri gitmeye yariyor navigasyon gibi
+  driver.navigate().to("https://testpages.herokuapp.com/styled/index.html");
+  System.out.println(driver.getCurrentUrl());//o anda bulundugun URL yi verir
+  driver.navigate().back();//tarayici history sinden geri geldim.
+  driver.navigate().forward();//tarayici history sinden ileri gittim.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+-//Class in karsiligi olan CSS-Sekillendirme degerlerini almak icin getCssValue kullanilir
+   System.out.println("getCssValue(color) = "+inputValEnter.getCssValue("color"));
+   System.out.println("getCssValue(font-size) = "+inputValEnter.getCssValue("font-size"));
+   System.out.println("inputValEnter.getCssValue(\"background\") = " + inputValEnter.getCssValue("background"));
+ //incele dedigimizde html in saginda yazan color font-size background vs. oradan buluyoruz

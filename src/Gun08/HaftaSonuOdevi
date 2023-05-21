@@ -1,0 +1,3 @@
+driver.get("https://www.saucedemo.com/");
+1.odev)Bu siteden 3 tane random urun secilecek ve toplamlar kontrol edilecek
+2.odev)String bir list ti ekrandan girilen rakamlarla doldurun sonra bunlarin toplamini bulun

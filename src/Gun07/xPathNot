@@ -1,0 +1,82 @@
+-cssSelectorda olmayan 2 ozellik->1)elemandan geri gitme,ileri gitme 2)ekrandan gozuken yazisi ile bulma,text e gore arama yapabilir
+
+-xpath de intellijde yazma->By.xpath(“//[@id=’firstName’]”)->Tum sayfayi tariyor
+-Genel locator stratejin boyle olmali;(INTERVIEW SORUSU)
+1)once ID ile ara
+2)1. yok ile bulamazsan-> Css selector ile ara
+3)eger hicbiri calismazsa,XPath i kullan.
+
+-2 Cesit xpath vardir.Bunlar->Absolute xpath ve Relative xpath dir.
+*/html/body/div/form/input[2]->locatorda boylede aranabiliyor.Boyle aramaya locator,xpath de deniliyor.Absolute xpath deniliyor
+*//tag[@parametreAdi=’degeri’] ->Bunada locator,xpath denir.Relative xpath deniliyor
+
+            Absolute Xpath:
+           /html/body/div[2]/div/div/div/form/input
+           1- / başlıyor.
+           2- En baştan HTML den başlyarak bir yol bulur.Araya başka eleman girdiğinde yol kaybolur.
+           Bu yüzden kullanışsızdır.
+
+           Relative Xpath:
+           //*[@id='login-button']
+            1- // başlıyor.
+            2- Elemanı direk bulur, baştan itibaren diğer elemanlara bağlı kalmaz.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+-Xpath=//tagname[@Attribute=’Value’]->css de tagname zorunlu degildi ama xPath de tagname i yazmak zorunludur.
+-Xpath olarak locatorda arama boyle yapilir-> //input[@name='syx_sov']->input metodunun icinde name i syx_sov olan metodu bulur
+->intellijde boyle yazilir; findElement(By.xpath(“ //*input[@name='syx_sov']”));
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+           CSS                             	XPATH
+>      -> cocuklar                         /
+space  -> tüm cocuklar(altsoy)            //
++      -> bitişik kardeş                  //following-sibling::
+~      -> tüm kardeşler                   //following::
+
+CSS                   	 XPATH
+           ile başlayan  id^     	 //*[starts-with(@id,'u_')]
+           ile biten     id$      	//*[ends-with(@id,'_4545')]
+           içinde geçen  id*     	 //*[contains(@id,'u_')]  -> Xpath=//*[contains(@type,'sub')]   type inde sub kelimesi geçen
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+**BIRDEN FAZLA PARAMETRE ILE ARAMA
+           CSS    			 XPATH
+ [id='msg'][value='Good']    	//*[@id='msg' and @value='Good']-> XPATH de 2 den fazla parametre girceksen araya ‘or’ koyabilirsin
+
+**<div>
+<h4>Accepted usernames are:</h4></div>->Boyle siyah yazilmis seyi bulmak icin  boyle yapilir;
+CSS de-> div in cocugu ile bulunur
+xPath de->//*[text()=’ Accepted usernames are:’] bir benzeri ornek containsli->//h2[contains(text(),’Popular right now’)]
+  ile bulunur
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+XPATH in CSS den üstünlüğü
+/..                          -> parent e gider
+//*[ text()='merhaba dünya']  -> görünen yazısı ile bulma
+//*[ contains( text(), 'merhaba' ) ] -> görünen yazısında merhaba geçen
+
+bütün sayfada bulunan çoklu locatorlarda hangi eleman istenirse onu bulma
+(//*[@id='user-message'])[1]
+
+// CSS deki nth-child  ın XPATH deki karşılığı
+//ul[@class='nav navbar-nav']/li[2]
+
+<input type="text" value="merhaba dünya" />   ----> intellijde cagirmak icin->      getAttribute("value");
+String kutuicindekiyazi=txtBox.getAttribute(“value”)
+Assert.assertTrue(“mesaj”,msg.getText().equals(kutuicindekiyazi));
+
+
+-bir üste parente gitme “/..” ile gidilir ornek-> //label[text()='Enter message']/../..
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+getText  ile  getAttribute("value");  farkı
+
+<p> merhaba dünya </p>   -> ekranda gözuken yazısı : merhaba dünya   getText() : tag lerin arasında kalanı alırsın
+
+Siyah yazilmis bir yaziyi mesela ’Your Message:’ diye yazilan bir yaziyi bulma;
+Css ile bulmada->div[id=’user-message’]>label ile bulunur
+xPath de bulmada->//*[text()=’Your Message:’]->basindaki * ile tumunu arar * yerine label dersen sadece labellarda arar.’and’ koyarak baska parametreli olanida arayabilirsin
+
+xPathde aramada->//*[@id=’user-message’] yazarsin.Attributlarda aramada basina @ isaretini koymaya unutma.
+				                                   birden fazla varsa (//*[@id=’user-message’])[n]->’n’ inciyi bulur
+
+xPathde->//ul[@class=’nav navbar-nav’]/li[2] classin cocuklarindan ‘li’ lerden 2. Siradaki ‘li’ li olan
+
+
+getText=web de yazan yaziyi alir
+result.getAttribute("value");-> value de senin gonderdigin yaziyi alir.

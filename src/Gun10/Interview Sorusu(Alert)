@@ -1,0 +1,11 @@
+/*
+      Interview sorusu
+      - Alertleri nasıl kullanırsın ?
+        driver.switchTo().alert()     -> alerte geçerim
+        komutları:
+        1- accept : OK, TAMAM botunan basmamızı sağlar.
+        2- dismiss : CANCEL, HAYIR, yani olumsuz butonuna basmamızı sağlıyor.
+        3- sendKeys : yazı gönderme
+        4- getText : uyarı yazısını alma
+
+ */
