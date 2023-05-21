@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class a  extends BaseDriver {
+public class SoruTekrari extends BaseDriver {
     @Test
     public void Test1() {
 
